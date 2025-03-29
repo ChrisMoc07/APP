@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@property --a{
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+@property --p {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 0%;
+}
+@property --c1 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #000;
+}
+@property --c2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #000;
+}
+
+html {
+  --s: 80px;
+  --_g: #0000, var(--c1) 2deg calc(var(--a) - 2deg),#0000 var(--a);
+  background: 
+    conic-gradient(from calc(-45deg  - var(--a)/2) at top    var(--p) left  var(--p),var(--_g)),
+    conic-gradient(from calc(-45deg  - var(--a)/2) at top    var(--p) left  var(--p),var(--_g)),
+    conic-gradient(from calc( 45deg  - var(--a)/2) at top    var(--p) right var(--p),var(--_g)),
+    conic-gradient(from calc( 45deg  - var(--a)/2) at top    var(--p) right var(--p),var(--_g)),
+    conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left  var(--p),var(--_g)),
+    conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left  var(--p),var(--_g)),
+    conic-gradient(from calc( 135deg - var(--a)/2) at bottom var(--p) right var(--p),var(--_g)),
+    conic-gradient(from calc( 135deg - var(--a)/2) at bottom var(--p) right var(--p),var(--_g))
+    var(--c2);
+  background-size: calc(2*var(--s)) calc(2*var(--s));
+  animation: m 2s infinite alternate linear;
+}
+
+@keyframes m {
+  0%,15% {
+    --a: 135deg;
+    --p: 20%;
+    --c1: #3B8183;
+    --c2: #FAD089;
+    background-position: 0 0,var(--s) var(--s);
+  }
+  45%,50% {
+    --a: 90deg;
+    --p: 25%;
+    --c1: #3B8183;
+    --c2: #FAD089;
+    background-position: 0 0,var(--s) var(--s);
+  }
+  50.01%,55% {
+    --a: 90deg;
+    --p: 25%;
+    --c2: #3B8183;
+    --c1: #FAD089;
+    background-position: var(--s) 0,0 var(--s);
+  }
+  85%,100% {
+    --a: 135deg;
+    --p: 20%;
+    --c2: #3B8183;
+    --c1: #FAD089;
+    background-position: var(--s) 0,0 var(--s);
+  }
+}
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  font-family: 'Jost', sans-serif;
+  color:white;
+  overflow:hidden;
+}
+.container {
+  text-align: center;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  background-color: rgba(0, 153, 154, 0.9);
+}
+
+h1 {
+  margin-bottom: 30px;
+  color: white;
+  font-size: 55px;
+}
+
+input {
+  padding: 12px;
+  font-size: 1.5rem;
+  width: 90px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#timerDisplay {
+  font-size: 4rem;
+  margin-top: 20px;
+  font-weight: bold;
+}
+#startButton {
+  background-color: #FF689B;
+}
+#startButton:hover {
+  background-color: #cc4370;
+}
+#pauseButton {
+  background-color: #7405ac;
+}
+#pauseButton:hover {
+  background-color: #470469;
+}
+#popup-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.popup-image {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+}
+.popup-image:hover {
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+}
+.popup-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  input {
+    font-size: 1.2rem;
+    padding: 10px;
+    width: 70px;
+  }
+
+  button {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+  }
+
+  #timerDisplay {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  input {
+    font-size: 1rem;
+    padding: 8px;
+    width: 60px;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  #timerDisplay {
+    font-size: 2.5rem;
+  }
+}
